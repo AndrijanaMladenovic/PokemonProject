@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { getPokemon } from "../service/data";
 import { useEffect } from "react";
-import { upperCase } from "../service/data";
 
 import { AiFillLike } from "react-icons/ai";
 import { AiFillDislike } from "react-icons/ai";
@@ -9,10 +8,11 @@ import { AiOutlineSortAscending } from "react-icons/ai";
 import { TbSortDescendingLetters } from "react-icons/tb";
 import { GrPowerReset } from "react-icons/gr";
 import Pagination from "./Pagination";
+import NavBar from "./NavBar";
 
 import { useNavigate } from "react-router-dom";
 
-export default function Main({ query, setImg, img }) {
+export default function Main({ query, setImg, setQuery }) {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
 
@@ -118,16 +118,17 @@ export default function Main({ query, setImg, img }) {
     fetchPokemonData();
   };
 
-  console.log(img);
+  console.log(filterItems.length);
 
   if (items) {
     return (
       <>
+        <NavBar query={query} setQuery={setQuery} />
         <div className="flex gap-5 p-5">
           <button
             onClick={sortNameAtoZ}
             className=" px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-            {sortType == true ? (
+            {sortType == false ? (
               <AiOutlineSortAscending className=" w-6 h-6" />
             ) : (
               <TbSortDescendingLetters className=" w-6 h-6" />
@@ -193,13 +194,16 @@ export default function Main({ query, setImg, img }) {
               )}
             </div>
           ))}
-
+        </div>
+        {filterItems.length >= 24 ? (
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             goToPage={goToPage}
           />
-        </div>
+        ) : (
+          ""
+        )}
       </>
     );
   }

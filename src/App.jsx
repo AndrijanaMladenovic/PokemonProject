@@ -11,7 +11,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <NavBar query={query} setQuery={setQuery} />
         <Routes>
           <Route
             path=""
@@ -24,6 +23,7 @@ function App() {
               />
             }
           />
+
           <Route path="/:pokemon" element={<InfoPage img={img} />} />
         </Routes>
       </BrowserRouter>
