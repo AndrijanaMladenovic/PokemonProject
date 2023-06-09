@@ -21,7 +21,7 @@ export default function InfoPage({ img }) {
       <>
         <div className=" flex items-center h-20 p-4 bg-red-500 justify-around">
           <Link to="/">
-            <img className=" w-24" src="./public/logo.png" alt="" />
+            <img className=" w-24" src="/logo.png" alt="" />
           </Link>
         </div>
         <div className="flex justify-center gap-8 items-center pt-8">

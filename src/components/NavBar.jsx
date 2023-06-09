@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function NavBar({ query, setQuery }) {
   return (
     <div className=" flex items-center h-20 p-4 bg-red-500 justify-around">
-      <img className=" w-24" src="./public/logo.png" alt="" />
+      <img className=" w-24" src="/logo.png" alt="" />
       <label htmlFor="">
         <span className=" font-bold text-white p-2">Search</span>
         <input
