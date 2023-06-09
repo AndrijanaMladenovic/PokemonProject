@@ -15,7 +15,6 @@ export default function InfoPage({ img }) {
   useEffect(() => {
     getPokemonInfo();
   }, [pokemon]);
-  console.log(items);
 
   if (items) {
     return (
